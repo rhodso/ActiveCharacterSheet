@@ -41,5 +41,5 @@ fi
 echo "Installing dependencies..."
 pip install -r requirements.txt
 
-echo "Running main.py..."
-python MainUI.py
+echo "Running main.py with additional arguments: $@"
+python MainUI.py "$@"

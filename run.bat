@@ -44,7 +44,7 @@ if "%VIRTUAL_ENV%" == "" (
 echo Installing dependencies...
 pip install -r requirements.txt
 
-echo Running main.py...
-python MainUI.py
+echo Running main.py with arguments: %*
+python MainUI.py %*
 
 endlocal

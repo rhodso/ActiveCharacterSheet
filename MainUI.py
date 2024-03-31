@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+
+import sys
+import os
+
 import tkinter as tk
 from tkinter import filedialog
 import tkinter.ttk as ttk
@@ -10,7 +14,9 @@ from EncounterTracker import EncounterTracker
 from Popup import EditItem_Option, Popup
 
 class MainUI:
-    def __init__(self, master=None):
+    def __init__(self, master=None, default_cs_loc=None):
+        self.default_cs_loc = default_cs_loc
+
         # build ui
         self.UI = tk.Tk() if master is None else tk.Toplevel(master)
         self.UI.configure(height=200, width=300)
@@ -157,7 +163,10 @@ class MainUI:
         }
 
         # Create a file save dialog, with the default file name set to the character's name
-        file_path = filedialog.asksaveasfilename(initialdir=".", initialfile=new_character["name"] + ".json", filetypes=(("JSON files", "*.json"), ("All files", "*.*")))
+        if(self.default_cs_loc is not None):
+            file_path = filedialog.asksaveasfilename(initialdir=self.default_cs_loc, initialfile=new_character["name"] + ".json", filetypes=(("JSON files", "*.json"), ("All files", "*.*")))
+        else:
+            file_path = filedialog.asksaveasfilename(initialdir="..", initialfile=new_character["name"] + ".json", filetypes=(("JSON files", "*.json"), ("All files", "*.*")))
         # file_path = "./test_sheet.json"
 
         # Save the new character sheet to the selected file
@@ -175,7 +184,10 @@ class MainUI:
 
     def load_char_action(self):
         # Create a file open dialog
-        file_path = filedialog.askopenfilename(initialdir=".", filetypes=(("JSON files", "*.json"), ("All files", "*.*")), multiple=False)
+        if(self.default_cs_loc is not None):
+            file_path = filedialog.askopenfilename(initialdir=self.default_cs_loc, filetypes=(("JSON files", "*.json"), ("All files", "*.*")), multiple=False)
+        else:
+            file_path = filedialog.askopenfilename(initialdir="..", filetypes=(("JSON files", "*.json"), ("All files", "*.*")), multiple=False)
         # file_path = "./test_sheet.json"
 
         # Open the selected file
@@ -198,6 +210,20 @@ class MainUI:
 
 
 if __name__ == "__main__":
-    app = MainUI()
+    default_cs_loc = None
+    if "--def-cs-loc" in sys.argv:
+        index = sys.argv.index("--def-cs-loc")
+        if index + 1 < len(sys.argv):
+            file_path = sys.argv[index + 1]
+            if os.path.exists(file_path):
+                default_cs_loc = file_path
+            else:
+                print(f"Error: File path '{file_path}' does not exist.")
+                sys.exit(1)
+        else:
+            print("Error: Missing file path argument after --def-cs-loc.")
+            sys.exit(1)
+
+    app = MainUI(default_cs_loc=default_cs_loc)
     app.run()
 
