@@ -1,0 +1,202 @@
+{
+  "bonus_init": 0,
+  "con": 14,
+  "hp": 22,
+  "speed": 30,
+  "hpMax": 22,
+  "spellAttack": 0,
+  "dex": 16,
+  "currency": [
+    0,
+    0,
+    9,
+    5,
+    0
+  ],
+  "trackers": [
+    {
+      "name": "Hit Dice",
+      "value": 3,
+      "max_value": 3,
+      "refresh": ""
+    },
+    {
+      "name": "Divine Sense",
+      "value": "6",
+      "max_value": "6",
+      "refresh": "LR"
+    },
+    {
+      "name": "Hexblade's Curse",
+      "value": "1",
+      "max_value": "1",
+      "refresh": "SR"
+    },
+    {
+      "name": "Lay on Hands",
+      "value": "20",
+      "max_value": "20",
+      "refresh": "LR"
+    },
+    {
+      "name": "Sorcery Points",
+      "value": 10,
+      "max_value": 10,
+      "refresh": "SR+4"
+    }
+  ],
+  "spells": [
+    {
+      "level": 1,
+      "name": "Cure Wounds",
+      "save": "",
+      "cast_time": "1 action",
+      "range": "Touch",
+      "damage": "1d8+5",
+      "duration": "Instantaneous",
+      "description": "A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs.",
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "level": 0,
+      "name": "Eldritch Blast",
+      "save": "",
+      "cast_time": "1 action",
+      "range": "120 feet",
+      "damage": "1d10",
+      "duration": "Instantaneous",
+      "description": "A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage.",
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "level": 0,
+      "name": "Fire Bolt",
+      "save": "",
+      "cast_time": "1 action",
+      "range": "120 feet",
+      "damage": "1d10",
+      "duration": "Instantaneous",
+      "description": "You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage.",
+      "ritual": false,
+      "concentration": false
+    },
+    {
+      "level": 2,
+      "name": "Hold Person",
+      "save": "Wisdom",
+      "cast_time": "1 action",
+      "range": "60 feet",
+      "damage": "",
+      "duration": "1 minute",
+      "description": "Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.",
+      "ritual": false,
+      "concentration": true
+    }
+  ],
+  "class": "Paladin",
+  "cha": 20,
+  "info": "Wings:\n I have bat-like wings sprouting from my shoulder blades that give me flying speed of 30 feet when I'm not wearing heavy armor.\n\nCourt Functionary\nMy knowledge of how bureaucracies function lets me gain access to the records and inner workings of any noble court or government I encounter.\n I know or can easily acquire the knowledge who the movers and shakers are, whom to go to for the favors I seek, and what the current intrigues of \ninterest in the group are\n\nDivine Sense: (6/LR)\nAs an action, I sense celestials/fiends/undead/consecrated/desecrated within 60 ft Until the end of my next turn, \nI sense the type/location if it is not behind total cover\n\nLay on hands: (5/LR)\nAs an action, I can use points in my pool to heal a touched, living creature's hit points I can neutralize poisons/diseases \ninstead at a cost of 5 points per affliction\n\n",
+  "wis": 14,
+  "ac": 18,
+  "lvl": 2,
+  "race": "SomeRace",
+  "weaponResource": 0,
+  "spellDC": 0,
+  "prof": 2,
+  "int": 14,
+  "cLevel": 0,
+  "str": 11,
+  "hitDieDR": "1d10",
+  "background": "Some_Background",
+  "name": "TestCharacter",
+  "subclass": "Some_Subclass",
+  "xp": 0,
+  "spellSlotRefresh": "SR",
+  "spellSlotsLeft": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "spellSlotsMax": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "alignment": "-",
+  "weapons": [
+    {
+      "name": "Arcane Bow",
+      "attributes": "Two-Handed",
+      "ability": "Dex",
+      "damageType": "Piercing",
+      "isProficient": true,
+      "range": "Ranged (150/600)",
+      "damage": "1d8+3",
+      "hit_bns": 0
+    },
+    {
+      "name": "Big Sword",
+      "attributes": "Two-Handed, Heavy, Versatile (1d12)",
+      "ability": "cha",
+      "damageType": "Slashing",
+      "isProficient": true,
+      "range": "Melee",
+      "damage": "1d10",
+      "hit_bns": 0
+    },
+    {
+      "name": "Thunderstrike Hammer",
+      "attributes": "Two-Handed",
+      "ability": "Str",
+      "damageType": "Bludgeoning",
+      "isProficient": true,
+      "range": "Melee",
+      "damage": "1d12+4",
+      "hit_bns": 0
+    },
+    {
+      "name": "Venomous Dagger",
+      "attributes": "Light",
+      "ability": "Dex",
+      "damageType": "Piercing",
+      "isProficient": true,
+      "range": "Melee",
+      "damage": "1d4+2",
+      "hit_bns": 0
+    }
+  ],
+  "abilities": {
+    "athletics": 0,
+    "acrobatics": 0,
+    "sleightOfHand": 0,
+    "stealth": 0,
+    "arcana": 0,
+    "history": 0,
+    "investigation": 1,
+    "nature": 0,
+    "religion": 0,
+    "animalHandling": 0,
+    "insight": 1,
+    "medicine": 0,
+    "perception": 1,
+    "survival": 2,
+    "deception": 0,
+    "intimidation": 1,
+    "performance": 0,
+    "persuasion": 0
+  }
+}

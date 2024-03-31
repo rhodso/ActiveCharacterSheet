@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="toplevel_2">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Frame" id="frame_5">
+        <property name="height">310</property>
+        <property name="width">450</property>
+        <layout manager="pack">
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="header_label" named="True">
+            <property name="font">{Arial} 16 {}</property>
+            <property name="text" translatable="yes">Encounter Tracker</property>
+            <layout manager="place">
+              <property name="anchor">nw</property>
+              <property name="x">10</property>
+              <property name="y">10</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="new_tab_button" named="True">
+            <property name="command" type="command" cbtype="simple">new_tab_button_action</property>
+            <property name="text" translatable="yes">New Tab</property>
+            <layout manager="place">
+              <property name="anchor">ne</property>
+              <property name="x">440</property>
+              <property name="y">5</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="beastiary_button" named="True">
+            <property name="command" type="command" cbtype="simple">beastiary_button_action</property>
+            <property name="text" translatable="yes">Beastiary</property>
+            <layout manager="place">
+              <property name="anchor">ne</property>
+              <property name="x">440</property>
+              <property name="y">30</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame_9">
+            <property name="height">300</property>
+            <property name="width">490</property>
+            <layout manager="place">
+              <property name="anchor">nw</property>
+              <property name="height">245</property>
+              <property name="width">435</property>
+              <property name="x">5</property>
+              <property name="y">60</property>
+            </layout>
+            <child>
+              <object class="ttk.Notebook" id="combat_notebook" named="True">
+                <property name="height">200</property>
+                <property name="width">470</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Notebook.Tab" id="example_tab" named="True">
+                    <property name="text" translatable="yes">Enemy 1</property>
+                    <child>
+                      <object class="ttk.Frame" id="example_mainframe" named="True">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Frame" id="example_combat_frame" named="True">
+                            <property name="height">140</property>
+                            <property name="width">150</property>
+                            <layout manager="place">
+                              <property name="anchor">nw</property>
+                              <property name="height">220</property>
+                              <property name="width">150</property>
+                              <property name="x">2</property>
+                              <property name="y">2</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Frame" id="example_combat_topframe" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="example_combat_log_header" named="True">
+                                    <property name="text" translatable="yes">Combat Log</property>
+                                    <layout manager="pack">
+                                      <property name="side">left</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="example_undobutton" named="True">
+                                    <property name="text" translatable="yes">Undo</property>
+                                    <property name="width">5</property>
+                                    <layout manager="pack">
+                                      <property name="padx">20</property>
+                                      <property name="side">right</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="tk.Text" id="example_combat_log" named="True">
+                                <property name="font">{arial} 8 {}</property>
+                                <property name="height">10</property>
+                                <property name="width">45</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">both</property>
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame_15">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="place">
+                              <property name="anchor">nw</property>
+                              <property name="height">220</property>
+                              <property name="width">280</property>
+                              <property name="x">150</property>
+                              <property name="y">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Frame" id="frame_23">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="row">0</property>
+                                  <property name="sticky">n</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="example_function_label" named="True">
+                                    <property name="text" translatable="yes">Functions</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="columnspan">2</property>
+                                      <property name="row">0</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="frame_6">
+                                    <property name="height">7</property>
+                                    <property name="width">1</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">1</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="example_renametab_button" named="True">
+                                    <property name="command" type="command" cbtype="with_wid">renametab_button_action</property>
+                                    <property name="text" translatable="yes">Rename Tab</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="search_bst_button" named="True">
+                                    <property name="command" type="command" cbtype="with_wid">search_bst_button_action</property>
+                                    <property name="text" translatable="yes">Search BST</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="example_clearlog_button" named="True">
+                                    <property name="command" type="command" cbtype="with_wid">clearlog_action</property>
+                                    <property name="text" translatable="yes">Clear Log</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">3</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="example_savetobeastiary_button" named="True">
+                                    <property name="command" type="command" cbtype="with_wid">savetobeastiary_action</property>
+                                    <property name="text" translatable="yes">Save to BST</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="row">3</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="frame_16">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="grid">
+                                  <property name="column">1</property>
+                                  <property name="row">0</property>
+                                  <property name="sticky">e</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="example_hm_label" named="True">
+                                    <property name="font">{Arial} 10 {}</property>
+                                    <property name="justify">right</property>
+                                    <property name="text" translatable="yes">Highest Miss:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="example_lh_label" named="True">
+                                    <property name="text" translatable="yes">Lowest Hit:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="example_td_label" named="True">
+                                    <property name="text" translatable="yes">Total Damage:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="example_hm_val_label" named="True">
+                                    <property name="text" translatable="yes">999</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="example_lh_val_label" named="True">
+                                    <property name="text" translatable="yes">999</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="example_td_val_label" named="True">
+                                    <property name="text" translatable="yes">9999</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="frame_25">
+                                <property name="height">20</property>
+                                <property name="width">110</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="columnspan">2</property>
+                                  <property name="row">1</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="frame_20">
+                                <property name="height">200</property>
+                                <property name="width">100</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="row">2</property>
+                                  <property name="sticky">n</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="example_dt_header_label" named="True">
+                                    <property name="text" translatable="yes">Damage Type</property>
+                                    <layout manager="pack">
+                                      <property name="side">top</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Combobox" id="example_damagetype_box" named="True">
+                                    <layout manager="pack">
+                                      <property name="side">top</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="frame_1">
+                                    <property name="height">130</property>
+                                    <property name="width">140</property>
+                                    <layout manager="pack">
+                                      <property name="side">top</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Radiobutton" id="example_DT_immune_rbtn" named="True">
+                                        <property name="text" translatable="yes">(x0.0) Immune</property>
+                                        <layout manager="place">
+                                          <property name="anchor">nw</property>
+                                          <property name="x">0</property>
+                                          <property name="y">0</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Radiobutton" id="example_DT_resistant_rbtn" named="True">
+                                        <property name="text" translatable="yes">(x0.5) Resistant</property>
+                                        <layout manager="place">
+                                          <property name="anchor">nw</property>
+                                          <property name="x">0</property>
+                                          <property name="y">20</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Radiobutton" id="example_DT_normal_rbtn" named="True">
+                                        <property name="text" translatable="yes">(x1.0) Normal</property>
+                                        <layout manager="place">
+                                          <property name="anchor">nw</property>
+                                          <property name="x">0</property>
+                                          <property name="y">40</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Radiobutton" id="example_DT_weak_rbtn" named="True">
+                                        <property name="text" translatable="yes">(x2.0) Weak</property>
+                                        <layout manager="place">
+                                          <property name="anchor">nw</property>
+                                          <property name="x">0</property>
+                                          <property name="y">60</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="frame_19">
+                                <property name="height">200</property>
+                                <property name="width">100</property>
+                                <layout manager="grid">
+                                  <property name="column">1</property>
+                                  <property name="row">2</property>
+                                  <property name="sticky">ne</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="example_hr_header_label" named="True">
+                                    <property name="text" translatable="yes">Hit Roll</property>
+                                    <layout manager="pack">
+                                      <property name="side">top</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="example_hitroll_entry" named="True">
+                                    <layout manager="pack">
+                                      <property name="side">top</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Checkbutton" id="example_attack_hit_button" named="True">
+                                    <property name="text" translatable="yes">Attack Hit?</property>
+                                    <property name="variable">boolean:attack_hit</property>
+                                    <layout manager="pack">
+                                      <property name="side">top</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="example_add_to_tracker_button" named="True">
+                                    <property name="command" type="command" cbtype="with_wid">example_add_to_tracker_button_action</property>
+                                    <property name="text" translatable="yes">Add to Tracker</property>
+                                    <layout manager="pack">
+                                      <property name="side">top</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

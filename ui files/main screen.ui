@@ -1,0 +1,3307 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="UI" named="True">
+    <property name="height">200</property>
+    <property name="title" translatable="yes">D&amp;D Active Character Sheet</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Label" id="header_label" named="True">
+        <property name="anchor">nw</property>
+        <property name="compound">left</property>
+        <property name="font">{Sans} 20 {bold}</property>
+        <property name="justify">center</property>
+        <property name="state">normal</property>
+        <property name="text" translatable="yes">D&amp;D Active Character Sheet</property>
+        <property name="width">25</property>
+        <layout manager="pack">
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Notebook" id="acs_tabs_notebook" named="True">
+        <property name="height">500</property>
+        <property name="width">700</property>
+        <layout manager="pack">
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Notebook.Tab" id="base_info_tab" named="True">
+            <property name="text" translatable="yes">Base Info</property>
+            <child>
+              <object class="ttk.Frame" id="base_info_frame" named="True">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="fill">both</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Labelframe" id="base_stats_frame" named="True">
+                    <property name="height">200</property>
+                    <property name="labelanchor">nw</property>
+                    <property name="text" translatable="yes">Base Stats</property>
+                    <property name="width">300</property>
+                    <layout manager="place">
+                      <property name="anchor">nw</property>
+                      <property name="height">100</property>
+                      <property name="width">500</property>
+                      <property name="x">10</property>
+                      <property name="y">10</property>
+                    </layout>
+                    <containerlayout manager="grid">
+                      <property type="col" id="0" name="pad">5</property>
+                      <property type="col" id="all" name="pad">7</property>
+                    </containerlayout>
+                    <child>
+                      <object class="ttk.Frame" id="hp_frame" named="True">
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="hp_label" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">HP</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="hp_val_label" named="True">
+                            <property name="font">{Sans} 11 {}</property>
+                            <property name="text" translatable="yes">999/999</property>
+                            <property name="textvariable">string:hp_value</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="crhp_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">crhp_update_action</property>
+                            <property name="text" translatable="yes">CR</property>
+                            <property name="width">3</property>
+                            <layout manager="pack">
+                              <property name="expand">false</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="mxhp_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">mxhp_update_action</property>
+                            <property name="text" translatable="yes">MX</property>
+                            <property name="width">3</property>
+                            <layout manager="pack">
+                              <property name="side">right</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="ac_frame" named="True">
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="ac_label" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">AC</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="ac_val_label" named="True">
+                            <property name="font">{Sans} 11 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:ac_value</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="ac_update_label" named="True">
+                            <property name="command" type="command" cbtype="simple">ac_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="speed_frame" named="True">
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="speed_label" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">Speed</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="speed_val_label" named="True">
+                            <property name="font">{Sans} 11 {}</property>
+                            <property name="text" translatable="yes">999 ft</property>
+                            <property name="textvariable">string:speed_value</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="speed_update_label" named="True">
+                            <property name="command" type="command" cbtype="simple">speed_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="hit_dice_frame" named="True">
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="hit_die_label" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">Hit Dice</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="hit_die_val_label" named="True">
+                            <property name="font">TkMenuFont</property>
+                            <property name="text" translatable="yes">1d99+99</property>
+                            <property name="textvariable">string:hit_dice_value</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="hit_die_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">hit_dice_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="prof_frame" named="True">
+                        <layout manager="grid">
+                          <property name="column">4</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="prof_label" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">Prof.</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="prof_val_label" named="True">
+                            <property name="font">{Sans} 11 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:prof_value</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="prof_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">prof_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="initiative_frame" named="True">
+                        <layout manager="grid">
+                          <property name="column">5</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="init_label" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">Initiative</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="init_val_label" named="True">
+                            <property name="font">{Sans} 11 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:init_value</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="init_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">init_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Labelframe" id="common_actions_frame" named="True">
+                    <property name="text" translatable="yes">Common Actions</property>
+                    <layout manager="place">
+                      <property name="anchor">ne</property>
+                      <property name="height">100</property>
+                      <property name="width">175</property>
+                      <property name="x">690</property>
+                      <property name="y">10</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Button" id="short_rest_button" named="True">
+                        <property name="command" type="command" cbtype="simple">short_rest_action</property>
+                        <property name="text" translatable="yes">Short Rest</property>
+                        <property name="width">25</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Button" id="long_rest_button" named="True">
+                        <property name="command" type="command" cbtype="simple">long_rest_action</property>
+                        <property name="text" translatable="yes">Long Rest</property>
+                        <property name="width">25</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Button" id="init_roll_button" named="True">
+                        <property name="text" translatable="yes">Roll Initiative!</property>
+                        <property name="width">25</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Labelframe" id="abilities_frame" named="True">
+                    <property name="text" translatable="yes">Abilities</property>
+                    <property name="width">200</property>
+                    <layout manager="place">
+                      <property name="anchor">nw</property>
+                      <property name="height">380</property>
+                      <property name="width">425</property>
+                      <property name="x">10</property>
+                      <property name="y">115</property>
+                    </layout>
+                    <containerlayout manager="grid">
+                      <property type="row" id="all" name="pad">17</property>
+                    </containerlayout>
+                    <child>
+                      <object class="ttk.Labelframe" id="strength_frame" named="True">
+                        <property name="text" translatable="yes">Strength</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="padx">5</property>
+                          <property name="pady">0</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <containerlayout manager="grid">
+                          <property type="row" id="all" name="pad">5</property>
+                        </containerlayout>
+                        <child>
+                          <object class="ttk.Label" id="strength_score_header_label" named="True">
+                            <property name="font">{sans} 8 {}</property>
+                            <property name="text" translatable="yes">Score</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="strength_mod_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Mod</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="strength_save_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="strength_score_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:strength_score_val</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="strength_mod_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:strength_mod_val</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="strength_save_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:strength_save_val</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="strength_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">strength_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="strength_save_button" named="True">
+                            <property name="command" type="command" cbtype="simple">strength_save_action</property>
+                            <property name="text" translatable="yes">Roll Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Labelframe" id="intelligence_panel" named="True">
+                        <property name="text" translatable="yes">Intelligence</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="padx">5</property>
+                          <property name="pady">0</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <containerlayout manager="grid">
+                          <property type="row" id="0" name="pad">5</property>
+                          <property type="row" id="all" name="pad">5</property>
+                        </containerlayout>
+                        <child>
+                          <object class="ttk.Label" id="intelligence_score_header_label" named="True">
+                            <property name="font">{sans} 8 {}</property>
+                            <property name="text" translatable="yes">Score</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="intelligence_mod_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Mod</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="intelligence_save_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="intelligence_score_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:intelligence_score_val</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="intelligence_mod_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:intelligence_mod_val</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="intelligence_save_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:intelligence_save_val</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="intelligence_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">intelligence_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="intelligence_save_button" named="True">
+                            <property name="command" type="command" cbtype="simple">intelligence_save_action</property>
+                            <property name="text" translatable="yes">Roll Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Labelframe" id="dexterity_panel" named="True">
+                        <property name="text" translatable="yes">Dexterity</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="padx">5</property>
+                          <property name="pady">0</property>
+                          <property name="row">1</property>
+                        </layout>
+                        <containerlayout manager="grid">
+                          <property type="row" id="0" name="pad">5</property>
+                          <property type="row" id="all" name="pad">5</property>
+                        </containerlayout>
+                        <child>
+                          <object class="ttk.Label" id="dexterity_score_header_label" named="True">
+                            <property name="font">{sans} 8 {}</property>
+                            <property name="text" translatable="yes">Score</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="dexterity_mod_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Mod</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="dexterity_save_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="dexterity_score_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:dexterity_score_val</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="dexterity_mod_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:dexterity_mod_val</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="dexterity_save_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:dexterity_save_val</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="dexterity_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">dexterity_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="dexterity_save_button" named="True">
+                            <property name="command" type="command" cbtype="simple">dexterity_save_action</property>
+                            <property name="text" translatable="yes">Roll Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Labelframe" id="wisdom_panel" named="True">
+                        <property name="text" translatable="yes">Wisdom</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="padx">5</property>
+                          <property name="pady">0</property>
+                          <property name="row">1</property>
+                        </layout>
+                        <containerlayout manager="grid">
+                          <property type="row" id="0" name="pad">5</property>
+                          <property type="row" id="all" name="pad">5</property>
+                        </containerlayout>
+                        <child>
+                          <object class="ttk.Label" id="wisdom_score_header_label" named="True">
+                            <property name="font">{sans} 8 {}</property>
+                            <property name="text" translatable="yes">Score</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="wisdom_mod_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Mod</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="wisdom_save_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="wisdom_score_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:wisdom_score_val</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="wisdom_mod_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:wisdom_mod_val</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="wisdom_save_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:wisdom_save_val</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="wisdom_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">wisdom_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="wisdom_save_button" named="True">
+                            <property name="command" type="command" cbtype="simple">wisdom_save_action</property>
+                            <property name="text" translatable="yes">Roll Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Labelframe" id="constitution_panel" named="True">
+                        <property name="text" translatable="yes">Constitution</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="padx">5</property>
+                          <property name="pady">0</property>
+                          <property name="row">2</property>
+                        </layout>
+                        <containerlayout manager="grid">
+                          <property type="row" id="0" name="pad">5</property>
+                          <property type="row" id="all" name="pad">5</property>
+                        </containerlayout>
+                        <child>
+                          <object class="ttk.Label" id="constitution_score_header_label" named="True">
+                            <property name="font">{sans} 8 {}</property>
+                            <property name="text" translatable="yes">Score</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="constitution_mod_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Mod</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="constitution_save_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="constitution_score_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:constitution_score_val</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="constitution_mod_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:constitution_mod_val</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="constitution_save_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:constitution_save_val</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="constitution_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">constitution_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="constitution_save_button" named="True">
+                            <property name="command" type="command" cbtype="simple">constitution_save_action</property>
+                            <property name="text" translatable="yes">Roll Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Labelframe" id="charisma_panel" named="True">
+                        <property name="text" translatable="yes">Charisma</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="padx">5</property>
+                          <property name="pady">0</property>
+                          <property name="row">2</property>
+                        </layout>
+                        <containerlayout manager="grid">
+                          <property type="row" id="0" name="pad">5</property>
+                          <property type="row" id="all" name="pad">5</property>
+                        </containerlayout>
+                        <child>
+                          <object class="ttk.Label" id="charisma_score_header_label" named="True">
+                            <property name="font">{sans} 8 {}</property>
+                            <property name="text" translatable="yes">Score</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="charisma_mod_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Mod</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="charisma_save_header_label" named="True">
+                            <property name="font">{Sans} 8 {}</property>
+                            <property name="text" translatable="yes">Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="charisma_score_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:charisma_score_val</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="charisma_mod_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:charisma_mod_val</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="charisma_save_label" named="True">
+                            <property name="font">{Sans} 12 {}</property>
+                            <property name="text" translatable="yes">+999</property>
+                            <property name="textvariable">string:charisma_save_val</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="charisma_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">charisma_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="charisma_save_button" named="True">
+                            <property name="command" type="command" cbtype="simple">charisma_save_action</property>
+                            <property name="text" translatable="yes">Roll Save</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="padx">1</property>
+                              <property name="pady">1</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Labelframe" id="trackers_frame" named="True">
+                    <property name="height">200</property>
+                    <property name="text" translatable="yes">Trackers</property>
+                    <property name="width">300</property>
+                    <layout manager="place">
+                      <property name="anchor">ne</property>
+                      <property name="height">380</property>
+                      <property name="width">250</property>
+                      <property name="x">690</property>
+                      <property name="y">115</property>
+                    </layout>
+                    <child>
+                      <object class="pygubu.builder.widgets.scrolledframe" id="trackers_scroll_frame" named="True">
+                        <property name="scrolltype">vertical</property>
+                        <property name="usemousewheel">false</property>
+                        <layout manager="place">
+                          <property name="anchor">nw</property>
+                          <property name="height">325</property>
+                          <property name="width">240</property>
+                          <property name="x">1</property>
+                          <property name="y">1</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Frame" id="example_tracker_frame" named="True">
+                            <property name="height">30</property>
+                            <property name="width">230</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">5</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <containerlayout manager="grid">
+                              <property name="anchor">sw</property>
+                            </containerlayout>
+                            <child>
+                              <object class="ttk.Label" id="example_tracker_header_label" named="True">
+                                <property name="font">{Sans} 8 {}</property>
+                                <property name="text" translatable="yes">Example Tracker</property>
+                                <property name="textvariable">string:example_tracker_name_val</property>
+                                <layout manager="place">
+                                  <property name="anchor">w</property>
+                                  <property name="x">1</property>
+                                  <property name="y">15</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="example_tracker_val_label" named="True">
+                                <property name="font">{sans} 12 {}</property>
+                                <property name="text" translatable="yes">999</property>
+                                <property name="textvariable">string:example_tracker_val</property>
+                                <layout manager="place">
+                                  <property name="anchor">w</property>
+                                  <property name="x">130</property>
+                                  <property name="y">15</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="example_tracker_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="with_wid">tracker_minus_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <property name="width">1</property>
+                                <layout manager="place">
+                                  <property name="anchor">e</property>
+                                  <property name="x">186</property>
+                                  <property name="y">15</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="example_tracker_set_button" named="True">
+                                <property name="command" type="command" cbtype="with_wid">tracker_set_action</property>
+                                <property name="text" translatable="yes">Set</property>
+                                <property name="width">3</property>
+                                <layout manager="place">
+                                  <property name="anchor">e</property>
+                                  <property name="width">27</property>
+                                  <property name="x">213</property>
+                                  <property name="y">15</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="example_tracker_add_button" named="True">
+                                <property name="command" type="command" cbtype="with_wid">tracker_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <property name="width">1</property>
+                                <layout manager="place">
+                                  <property name="anchor">e</property>
+                                  <property name="width">17</property>
+                                  <property name="x">230</property>
+                                  <property name="y">15</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Button" id="trackers_update_button" named="True">
+                        <property name="command" type="command" cbtype="simple">trackers_update_action</property>
+                        <property name="text" translatable="yes">Update Trackers</property>
+                        <property name="width">25</property>
+                        <layout manager="place">
+                          <property name="anchor">s</property>
+                          <property name="x">125</property>
+                          <property name="y">355</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Notebook.Tab" id="abilities_tab" named="True">
+            <property name="text" translatable="yes">Abilities</property>
+            <child>
+              <object class="ttk.Frame" id="frame2">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Labelframe" id="strength_abchk_frame" named="True">
+                    <property name="height">200</property>
+                    <property name="text" translatable="yes">Strength Abilities</property>
+                    <layout manager="place">
+                      <property name="anchor">ne</property>
+                      <property name="width">210</property>
+                      <property name="x">340</property>
+                      <property name="y">10</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="strength_" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="strength_abchk_header_label" named="True">
+                            <property name="text" translatable="yes">Strength</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="strength_abchk_val_label" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:strength_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="str_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame81" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label186" named="True">
+                            <property name="text" translatable="yes">Athletics</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label187" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:athletics_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="athletics_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">athletics_abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Labelframe" id="dexterity_abchk_frame" named="True">
+                    <property name="height">200</property>
+                    <property name="text" translatable="yes">Dexterity Abilities</property>
+                    <property name="width">200</property>
+                    <layout manager="place">
+                      <property name="anchor">ne</property>
+                      <property name="width">210</property>
+                      <property name="x">340</property>
+                      <property name="y">90</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="frame97" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label220" named="True">
+                            <property name="text" translatable="yes">Dexterity</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label221" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:dexterity_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="dex_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame98" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label222" named="True">
+                            <property name="text" translatable="yes">Acrobatics</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label223" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:acrobatics_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="acrobatics_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame99" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label224" named="True">
+                            <property name="text" translatable="yes">Sleight of Hand</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label225" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:soh_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="sleightOfHand_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame100" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label226" named="True">
+                            <property name="text" translatable="yes">Stealth</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label227" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:stealth_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="stealth_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Labelframe" id="intelligence_abchk_frame" named="True">
+                    <property name="height">200</property>
+                    <property name="text" translatable="yes">Intelligence Abilities</property>
+                    <property name="width">200</property>
+                    <layout manager="place">
+                      <property name="anchor">ne</property>
+                      <property name="width">210</property>
+                      <property name="x">340</property>
+                      <property name="y">220</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="frame92" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label210" named="True">
+                            <property name="text" translatable="yes">Intelligence</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label211" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:intelligence_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="int_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame93" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label212" named="True">
+                            <property name="text" translatable="yes">Arcana</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label213" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:arcana_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="arcana_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame94" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label214" named="True">
+                            <property name="text" translatable="yes">History</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label215" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:history_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="history_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame95" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label216" named="True">
+                            <property name="text" translatable="yes">Investigation</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label217" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:investigation_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="investigation_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame96" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label218" named="True">
+                            <property name="text" translatable="yes">Nature</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label219" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:nature_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="nature_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame102" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label230" named="True">
+                            <property name="text" translatable="yes">Religion</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label231" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:religion_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="religion_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Labelframe" id="wisdom_abchk_frame" named="True">
+                    <property name="text" translatable="yes">Wisdom Abilities</property>
+                    <layout manager="place">
+                      <property name="anchor">nw</property>
+                      <property name="width">210</property>
+                      <property name="x">350</property>
+                      <property name="y">10</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="frame87" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label200" named="True">
+                            <property name="text" translatable="yes">Wisdom</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label201" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:wisdom_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="wis_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="ah_abchk_frame" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label202" named="True">
+                            <property name="text" translatable="yes">Animal Handling</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label203" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:animalhandling_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="animalHandling_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame89" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label204" named="True">
+                            <property name="text" translatable="yes">Insight</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label205" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:insight_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="insight_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame90" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label206" named="True">
+                            <property name="text" translatable="yes">Medicine</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label207" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:medicine_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="medicine_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame91" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label208" named="True">
+                            <property name="text" translatable="yes">Perception	</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label209" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:perception_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="perception_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame101" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label228" named="True">
+                            <property name="text" translatable="yes">Survival</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label229" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:survival_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="survival_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Labelframe" id="charisma_abchk_frame" named="True">
+                    <property name="height">200</property>
+                    <property name="text" translatable="yes">Charisma Abilities</property>
+                    <property name="width">200</property>
+                    <layout manager="place">
+                      <property name="anchor">nw</property>
+                      <property name="width">210</property>
+                      <property name="x">350</property>
+                      <property name="y">190</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="frame82" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label190" named="True">
+                            <property name="text" translatable="yes">Charisma</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label191" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:charisma_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="charisma" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame83" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label192" named="True">
+                            <property name="text" translatable="yes">Deception</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label193" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:deception_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="deception_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame84" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label194" named="True">
+                            <property name="text" translatable="yes">Intimidation</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label195" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:intimidation_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="intimidation_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame85" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label196" named="True">
+                            <property name="text" translatable="yes">Performance</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label197" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:performance_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="performance_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame86" named="True">
+                        <property name="height">25</property>
+                        <property name="width">240</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label198" named="True">
+                            <property name="text" translatable="yes">Persuasion</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">1</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label199" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <property name="textvariable">string:persuasion_abchk_val</property>
+                            <layout manager="place">
+                              <property name="anchor">w</property>
+                              <property name="x">100</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="persuasion_abchk_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">abchk_action</property>
+                            <property name="text" translatable="yes">Roll</property>
+                            <layout manager="place">
+                              <property name="anchor">e</property>
+                              <property name="x">205</property>
+                              <property name="y">12</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Notebook.Tab" id="weapons_tab" named="True">
+            <property name="text" translatable="yes">Weapons</property>
+            <child>
+              <object class="ttk.Frame" id="frame3">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Frame" id="weapons_frame" named="True">
+                    <property name="height">490</property>
+                    <property name="padding">0</property>
+                    <property name="width">200</property>
+                    <layout manager="place">
+                      <property name="anchor">nw</property>
+                      <property name="width">690</property>
+                      <property name="x">5</property>
+                      <property name="y">5</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Button" id="weapons_update_button" named="True">
+                        <property name="command" type="command" cbtype="simple">weapons_update_action</property>
+                        <property name="text" translatable="yes">Update List</property>
+                        <layout manager="place">
+                          <property name="anchor">ne</property>
+                          <property name="x">685</property>
+                          <property name="y">5</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Labelframe" id="weapons_list_frame" named="True">
+                        <property name="height">200</property>
+                        <property name="text" translatable="yes">Weapons List</property>
+                        <property name="width">200</property>
+                        <layout manager="place">
+                          <property name="anchor">nw</property>
+                          <property name="height">460</property>
+                          <property name="width">680</property>
+                          <property name="x">0</property>
+                          <property name="y">30</property>
+                        </layout>
+                        <child>
+                          <object class="pygubu.builder.widgets.scrolledframe" id="weapons_scroll_frame" named="True">
+                            <property name="scrolltype">vertical</property>
+                            <property name="usemousewheel">false</property>
+                            <layout manager="pack">
+                              <property name="expand">true</property>
+                              <property name="fill">both</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Frame" id="frame1">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">both</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Frame" id="exampleWeaponPanel" named="True">
+                                    <property name="borderwidth">1</property>
+                                    <property name="height">50</property>
+                                    <property name="relief">groove</property>
+                                    <property name="width">660</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">0</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="exampleweapon_name_label" named="True">
+                                        <property name="text" translatable="yes">exampleWeaponName</property>
+                                        <property name="textvariable">string:exampleweapon_name_val</property>
+                                        <property name="width">55</property>
+                                        <layout manager="place">
+                                          <property name="anchor">nw</property>
+                                          <property name="x">5</property>
+                                          <property name="y">5</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="exampleweapon_attributes_label" named="True">
+                                        <property name="compound">top</property>
+                                        <property name="text" translatable="yes">exampleWeaponAttributes</property>
+                                        <property name="textvariable">string:exampleweapon_attributes_val</property>
+                                        <property name="width">85</property>
+                                        <layout manager="place">
+                                          <property name="anchor">sw</property>
+                                          <property name="x">5</property>
+                                          <property name="y">45</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="exampleweapon_range_label" named="True">
+                                        <property name="text" translatable="yes">999ft</property>
+                                        <property name="textvariable">string:exampleweapon_range_val</property>
+                                        <layout manager="place">
+                                          <property name="anchor">ne</property>
+                                          <property name="x">350</property>
+                                          <property name="y">5</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="exampleweapon_hit_label" named="True">
+                                        <property name="text" translatable="yes">+999</property>
+                                        <property name="textvariable">string:exampleweapon_hit_val</property>
+                                        <layout manager="place">
+                                          <property name="anchor">ne</property>
+                                          <property name="x">575</property>
+                                          <property name="y">5</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="exampleweapon_dmg_label" named="True">
+                                        <property name="text" translatable="yes">1d99+99</property>
+                                        <property name="textvariable">string:exampleweapon_dmg_val</property>
+                                        <layout manager="place">
+                                          <property name="anchor">se</property>
+                                          <property name="x">575</property>
+                                          <property name="y">45</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="exampleweapon_dmgtype_label" named="True">
+                                        <property name="text" translatable="yes">exampleDamageType</property>
+                                        <property name="textvariable">string:exampleweapon_dmgtype_val</property>
+                                        <layout manager="place">
+                                          <property name="anchor">ne</property>
+                                          <property name="x">520</property>
+                                          <property name="y">5</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Button" id="exampleweapon_hit_button" named="True">
+                                        <property name="command" type="command" cbtype="with_wid">weapon_hit_action</property>
+                                        <property name="text" translatable="yes">HIT</property>
+                                        <layout manager="place">
+                                          <property name="anchor">ne</property>
+                                          <property name="height">24</property>
+                                          <property name="x">655</property>
+                                          <property name="y">1</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Button" id="exampleweapon_dmg_button" named="True">
+                                        <property name="command" type="command" cbtype="with_wid">weapon_dmg_action</property>
+                                        <property name="text" translatable="yes">DMG</property>
+                                        <layout manager="place">
+                                          <property name="anchor">se</property>
+                                          <property name="height">24</property>
+                                          <property name="x">655</property>
+                                          <property name="y">49</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="ability_label" named="True">
+                                        <property name="text" translatable="yes">str</property>
+                                        <property name="textvariable">string:ability_val</property>
+                                        <layout manager="place">
+                                          <property name="anchor">nw</property>
+                                          <property name="x">375</property>
+                                          <property name="y">5</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Notebook.Tab" id="spells_tab" named="True">
+            <property name="text" translatable="yes">Spells</property>
+            <child>
+              <object class="ttk.Frame" id="frame4">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Frame" id="spells_frame" named="True">
+                    <property name="height">490</property>
+                    <property name="padding">0</property>
+                    <property name="width">200</property>
+                    <layout manager="place">
+                      <property name="anchor">nw</property>
+                      <property name="height">490</property>
+                      <property name="width">690</property>
+                      <property name="x">5</property>
+                      <property name="y">5</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="spell_slot_fram" named="True">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="place">
+                          <property name="anchor">nw</property>
+                          <property name="height">100</property>
+                          <property name="width">690</property>
+                          <property name="x">0</property>
+                          <property name="y">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Frame" id="lvl1_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl1_header_label" named="True">
+                                <property name="text" translatable="yes">Level 1</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl1_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl1_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl1_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="justify">left</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl1_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl1_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl1_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="lvl2_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl2_header_label" named="True">
+                                <property name="text" translatable="yes">Level 2</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl2_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl2_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl2_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl2_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl2_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl2_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="lvl3_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl3_header_label" named="True">
+                                <property name="text" translatable="yes">Level 3</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl3_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl3_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl3_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl3_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl3_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl3_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="lvl4_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">3</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl4_header_label" named="True">
+                                <property name="text" translatable="yes">Level 4</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl4_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl4_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl4_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl4_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl4_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl4_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="lvl5_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl5_header_label" named="True">
+                                <property name="text" translatable="yes">Level 5</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl5_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl5_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl5_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl5_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl5_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl5_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="lvl6_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl6_header_label" named="True">
+                                <property name="text" translatable="yes">Level 6</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl6_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl6_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl6_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl6_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl6_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl5_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="lvl7_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">6</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl7_header_label" named="True">
+                                <property name="text" translatable="yes">Level 7</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl7_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl7_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl7_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl7_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl7_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl7_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="lvl8_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">7</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl8_header_label" named="True">
+                                <property name="text" translatable="yes">Level 8</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl8_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl8_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl8_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl8_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl8_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl8_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="lvl9_frame" named="True">
+                            <property name="height">95</property>
+                            <property name="width">70</property>
+                            <layout manager="grid">
+                              <property name="column">8</property>
+                              <property name="row">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="lvl9_header_label" named="True">
+                                <property name="text" translatable="yes">Level 9</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl9_add_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl9_add_action</property>
+                                <property name="text" translatable="yes">+</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="lvl9_slots_label" named="True">
+                                <property name="font">{Sans} 14 {}</property>
+                                <property name="text" translatable="yes">99/99</property>
+                                <property name="textvariable">string:lvl9_spell_slot_val</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="lvl9_subtract_button" named="True">
+                                <property name="command" type="command" cbtype="simple">lvl9_subtract_action</property>
+                                <property name="text" translatable="yes">-</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Button" id="spell_slot_max_button" named="True">
+                        <property name="command" type="command" cbtype="simple">spell_slot_max_action</property>
+                        <property name="text" translatable="yes">Update Max Spell Slots</property>
+                        <layout manager="place">
+                          <property name="anchor">nw</property>
+                          <property name="x">0</property>
+                          <property name="y">95</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Button" id="spells_update_button" named="True">
+                        <property name="command" type="command" cbtype="simple">spells_update_action</property>
+                        <property name="text" translatable="yes">Update Spells List</property>
+                        <layout manager="place">
+                          <property name="anchor">ne</property>
+                          <property name="x">680</property>
+                          <property name="y">105</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Labelframe" id="labelframe39" named="True">
+                        <property name="height">200</property>
+                        <property name="text" translatable="yes">Spells List</property>
+                        <property name="width">200</property>
+                        <layout manager="place">
+                          <property name="anchor">nw</property>
+                          <property name="height">360</property>
+                          <property name="width">680</property>
+                          <property name="x">1</property>
+                          <property name="y">130</property>
+                        </layout>
+                        <child>
+                          <object class="pygubu.builder.widgets.scrolledframe" id="scrolledframe3">
+                            <property name="scrolltype">both</property>
+                            <property name="usemousewheel">false</property>
+                            <property name="width">690</property>
+                            <layout manager="place">
+                              <property name="anchor">nw</property>
+                              <property name="height">335</property>
+                              <property name="width">675</property>
+                              <property name="x">0</property>
+                              <property name="y">0</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Frame" id="examplespell_frame" named="True">
+                                <property name="height">80</property>
+                                <property name="relief">groove</property>
+                                <property name="width">670</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="pady">5</property>
+                                  <property name="row">0</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="examplespell_level_label" named="True">
+                                    <property name="relief">flat</property>
+                                    <property name="text" translatable="yes">999</property>
+                                    <property name="textvariable">string:examplespell_level_val</property>
+                                    <layout manager="place">
+                                      <property name="anchor">nw</property>
+                                      <property name="x">5</property>
+                                      <property name="y">5</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="examplespell_name_label" named="True">
+                                    <property name="text" translatable="yes">exampleSpellName</property>
+                                    <property name="textvariable">string:examplespell_name_val</property>
+                                    <layout manager="place">
+                                      <property name="anchor">nw</property>
+                                      <property name="x">30</property>
+                                      <property name="y">5</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="examplespell_description_label" named="True">
+                                    <property name="text" translatable="yes">A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage.A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage.</property>
+                                    <property name="textvariable">string:examplespell_description_val</property>
+                                    <property name="width">95</property>
+                                    <property name="wraplength">570</property>
+                                    <layout manager="place">
+                                      <property name="anchor">nw</property>
+                                      <property name="x">5</property>
+                                      <property name="y">25</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="examplespell_sav_label" named="True">
+                                    <property name="text" translatable="yes">exampleSpellSave</property>
+                                    <property name="textvariable">string:examplespell_save_val</property>
+                                    <layout manager="place">
+                                      <property name="anchor">ne</property>
+                                      <property name="x">370</property>
+                                      <property name="y">5</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="examplespell_time_label" named="True">
+                                    <property name="text" translatable="yes">1rea</property>
+                                    <property name="textvariable">string:examplespell_time_val</property>
+                                    <layout manager="place">
+                                      <property name="anchor">nw</property>
+                                      <property name="x">400</property>
+                                      <property name="y">5</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="examplespell_range_label" named="True">
+                                    <property name="text" translatable="yes">999ft</property>
+                                    <property name="textvariable">string:examplespell_range_val</property>
+                                    <layout manager="place">
+                                      <property name="anchor">nw</property>
+                                      <property name="x">465</property>
+                                      <property name="y">5</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="examplespell_duration_label" named="True">
+                                    <property name="text" translatable="yes">Instantaneous</property>
+                                    <property name="textvariable">string:examplespell_duration_val</property>
+                                    <layout manager="place">
+                                      <property name="anchor">ne</property>
+                                      <property name="x">580</property>
+                                      <property name="y">5</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="examplespell_hit_button" named="True">
+                                    <property name="command" type="command" cbtype="with_wid">spell_hit_action</property>
+                                    <property name="text" translatable="yes">HIT</property>
+                                    <layout manager="place">
+                                      <property name="anchor">ne</property>
+                                      <property name="height">24</property>
+                                      <property name="x">669</property>
+                                      <property name="y">1</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="examplespell_dmg_button" named="True">
+                                    <property name="command" type="command" cbtype="simple">spell_dmg_button</property>
+                                    <property name="text" translatable="yes">RLL</property>
+                                    <layout manager="place">
+                                      <property name="anchor">se</property>
+                                      <property name="height">24</property>
+                                      <property name="x">669</property>
+                                      <property name="y">48</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Notebook.Tab" id="information_tab" named="True">
+            <property name="text" translatable="yes">Other Information</property>
+            <child>
+              <object class="ttk.Frame" id="frame5">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Frame" id="frame144">
+                    <property name="height">110</property>
+                    <property name="width">700</property>
+                    <layout manager="pack">
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="frame147" named="True">
+                        <property name="height">95</property>
+                        <property name="width">70</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="pp_header_label" named="True">
+                            <property name="text" translatable="yes">Platinum</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="pp_add_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_add_action</property>
+                            <property name="text" translatable="yes">+</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label374" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:pp_val</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="pp_subtract_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_subtract_action</property>
+                            <property name="text" translatable="yes">-</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame148" named="True">
+                        <property name="height">95</property>
+                        <property name="width">70</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="gp_header_label" named="True">
+                            <property name="text" translatable="yes">Gold</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="gp_add_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_add_action</property>
+                            <property name="text" translatable="yes">+</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label378" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:gp_val</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="gp_subtract_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_subtract_action</property>
+                            <property name="text" translatable="yes">-</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame149" named="True">
+                        <property name="height">95</property>
+                        <property name="width">70</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="sp_header_label" named="True">
+                            <property name="text" translatable="yes">Silver</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="sp_add_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_add_action</property>
+                            <property name="text" translatable="yes">+</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label380" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:sp_val</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="sp_subtract_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_subtract_action</property>
+                            <property name="text" translatable="yes">-</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame150" named="True">
+                        <property name="height">95</property>
+                        <property name="width">70</property>
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="cp_header_label" named="True">
+                            <property name="text" translatable="yes">Copper</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="cp_add_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_add_action</property>
+                            <property name="text" translatable="yes">+</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label382" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:cp_val</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="cp_subtract_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_subtract_action</property>
+                            <property name="text" translatable="yes">-</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame151" named="True">
+                        <property name="height">95</property>
+                        <property name="width">70</property>
+                        <layout manager="grid">
+                          <property name="column">4</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="ep_header_label" named="True">
+                            <property name="text" translatable="yes">Electrum</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="ep_add_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_add_action</property>
+                            <property name="text" translatable="yes">+</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label384" named="True">
+                            <property name="font">{Sans} 14 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:ep_val</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="ep_subtract_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">coin_subtract_action</property>
+                            <property name="text" translatable="yes">-</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame154">
+                        <property name="height">0</property>
+                        <property name="width">20</property>
+                        <layout manager="grid">
+                          <property name="column">6</property>
+                          <property name="row">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame156">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="grid">
+                          <property name="column">7</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Button" id="coin_update_button" named="True">
+                            <property name="command" type="command" cbtype="simple">coin_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame_3">
+                        <property name="height">0</property>
+                        <property name="width">20</property>
+                        <layout manager="grid">
+                          <property name="column">8</property>
+                          <property name="row">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame_1">
+                        <property name="height">100</property>
+                        <property name="width">100</property>
+                        <layout manager="grid">
+                          <property name="column">9</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="level_label" named="True">
+                            <property name="font">{Sans} 16 {}</property>
+                            <property name="text" translatable="yes">Level</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="level_val_label" named="True">
+                            <property name="font">{Sans} 11 {}</property>
+                            <property name="text" translatable="yes">999</property>
+                            <property name="textvariable">string:ac_value</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="update_level_button" named="True">
+                            <property name="command" type="command" cbtype="simple">lvl_update_action</property>
+                            <property name="text" translatable="yes">Update</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Frame" id="frame146">
+                    <property name="height">500</property>
+                    <property name="width">700</property>
+                    <layout manager="pack">
+                      <property name="expand">true</property>
+                      <property name="fill">both</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Label" id="other_info_header" named="True">
+                        <property name="text" translatable="yes">Other Information:</property>
+                        <layout manager="place">
+                          <property name="anchor">nw</property>
+                          <property name="x">0</property>
+                          <property name="y">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame152">
+                        <property name="height">380</property>
+                        <property name="width">200</property>
+                        <layout manager="place">
+                          <property name="anchor">nw</property>
+                          <property name="height">380</property>
+                          <property name="width">690</property>
+                          <property name="x">5</property>
+                          <property name="y">22</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Scrollbar" id="scrollbar2">
+                            <property name="orient">vertical</property>
+                            <layout manager="place">
+                              <property name="anchor">ne</property>
+                              <property name="height">380</property>
+                              <property name="x">690</property>
+                              <property name="y">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame153">
+                            <property name="height">380</property>
+                            <property name="width">495</property>
+                            <layout manager="place">
+                              <property name="anchor">nw</property>
+                              <property name="height">380</property>
+                              <property name="width">670</property>
+                              <property name="x">0</property>
+                              <property name="y">0</property>
+                            </layout>
+                            <child>
+                              <object class="tk.Text" id="other_info_box" named="True">
+                                <property name="font">{sans} 10 {}</property>
+                                <property name="height">10</property>
+                                <property name="width">50</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">both</property>
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
