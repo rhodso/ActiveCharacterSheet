@@ -285,7 +285,7 @@ class EncounterTracker:
         enemy = next((x for x in self.enemies if x.id == enemy_id), None)
 
         # Undo the last log entry
-        if enemy.combat_log is not None:
+        if enemy is not None and enemy.combat_log is not None:
             enemy.combat_log.undo_log()
 
         # Reload the UI to display the updated combat log
@@ -298,8 +298,9 @@ class EncounterTracker:
         # Show a popup to get the new name for the enemy
         new_name = simpledialog.askstring("Rename Tab", "Enter the new name for the enemy:")
 
-        # Update the enemy's name
-        enemy.name = new_name
+        # Update the enemy's name if the enemy object is not None
+        if enemy is not None:
+            enemy.name = new_name
 
         # Reload the UI to display the updated name
         self.reload_ui()
@@ -318,8 +319,8 @@ class EncounterTracker:
         # Get the enemy object from the list of enemies
         enemy = next((x for x in self.enemies if x.id == enemy_id), None)
 
-        # Clear the combat log for the enemy
-        if enemy.combat_log is not None:
+        # Clear the combat log for the enemy if it exists
+        if enemy is not None and enemy.combat_log is not None:
             enemy.combat_log.clear_log()
 
         # Reload the UI to display the cleared combat log
@@ -335,6 +336,10 @@ class EncounterTracker:
     def add_to_tracker_button_action(self, enemy_id):
         # Get the enemy object from the list of enemies
         enemy = next((x for x in self.enemies if x.id == enemy_id), None)
+
+        # Check if the enemy object is None
+        if enemy is None:
+            return
 
         # Get the ui components for the enemy, which are stored in the enemy object
         ui_components = enemy.ui_components

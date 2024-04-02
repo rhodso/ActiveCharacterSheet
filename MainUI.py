@@ -174,7 +174,7 @@ class MainUI:
             CharacterSheet.write_json(file_path, new_character)
         else:
             # If the user cancelled the save dialog, show a message box to let them know that the new character was cancelled
-            Popup.MessageBox(self.mainwindow, "New Character Creation Cancelled", "The new character creation was cancelled.")
+            Popup.Message("The new character creation was cancelled.")
             return
         
         # Load the active character sheet ui with the new character sheet
@@ -185,9 +185,9 @@ class MainUI:
     def load_char_action(self):
         # Create a file open dialog
         if(self.default_cs_loc is not None):
-            file_path = filedialog.askopenfilename(initialdir=self.default_cs_loc, filetypes=(("JSON files", "*.json"), ("All files", "*.*")), multiple=False)
+            file_path = filedialog.askopenfilename(initialdir=self.default_cs_loc, filetypes=(("JSON files", "*.json"), ("All files", "*.*")))
         else:
-            file_path = filedialog.askopenfilename(initialdir="..", filetypes=(("JSON files", "*.json"), ("All files", "*.*")), multiple=False)
+            file_path = filedialog.askopenfilename(initialdir="..", filetypes=(("JSON files", "*.json"), ("All files", "*.*")))
         # file_path = "./test_sheet.json"
 
         # Open the selected file

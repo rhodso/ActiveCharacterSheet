@@ -45,7 +45,7 @@ class CharacterSheet:
 class Weapon:
     id_tracker = 0
 
-    def __init__(self, name, attributes, ability, damage_type, is_proficient, range, damage, hit_bonus):
+    def __init__(self, name="", attributes="", ability="", damage_type="", is_proficient=False, range="", damage="", hit_bonus=0):
         self.id = Weapon.id_tracker
         self.name = name
         self.attributes = attributes
@@ -61,7 +61,7 @@ class Weapon:
 class Spell:
     id_tracker = 0
 
-    def __init__(self, level, name, save, cast_time, range, damage, duration, description, ritual, concentration):
+    def __init__(self, level=0, name="", save="", cast_time="", range="", damage="", duration="", description="", ritual=False, concentration=False):
         self.id = Spell.id_tracker
         self.level = level
         self.name = name
@@ -79,7 +79,7 @@ class Spell:
 class Tracker:
     id_tracker = 0
 
-    def __init__(self, name, value, max_value, refresh):
+    def __init__(self, name="", value=0, max_value=0, refresh=""):
         self.id = Tracker.id_tracker
         self.name = name
         self.value = value
@@ -93,7 +93,7 @@ if __name__ == "__main__":
     file_path = 'test_sheet.json'
     try:
         # Example of reading JSON from file
-        read_data = CharacterSheet.read_json()
+        read_data = CharacterSheet.read_json('test_sheet.json')
         if read_data:
             print("Read JSON data:")
             print(read_data)

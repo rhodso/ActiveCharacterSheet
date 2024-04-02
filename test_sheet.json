@@ -40,7 +40,7 @@
     },
     {
       "name": "Sorcery Points",
-      "value": 10,
+      "value": 4,
       "max_value": 10,
       "refresh": "SR+4"
     }
@@ -83,7 +83,7 @@
       "concentration": false
     },
     {
-      "level": 2,
+      "level": 0,
       "name": "Hold Person",
       "save": "Wisdom",
       "cast_time": "1 action",
@@ -91,7 +91,7 @@
       "damage": "",
       "duration": "1 minute",
       "description": "Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.",
-      "ritual": false,
+      "ritual": true,
       "concentration": true
     }
   ],
@@ -141,7 +141,7 @@
     {
       "name": "Arcane Bow",
       "attributes": "Two-Handed",
-      "ability": "Dex",
+      "ability": "dex",
       "damageType": "Piercing",
       "isProficient": true,
       "range": "Ranged (150/600)",

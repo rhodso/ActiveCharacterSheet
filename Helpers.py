@@ -257,7 +257,7 @@ class Helpers:
         if 'd' not in dice:
             # If there is no 'd', then is the string an integer?
             try:
-                return int(dice)
+                return [0, (dice), 0]
             except ValueError:
                 raise ValueError("Invalid dice string")
         

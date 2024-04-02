@@ -16,7 +16,7 @@ class ActiveCharacterSheetUI:
 # ---------------------------------------------------------------------
 
     def __init__(self, character_sheet_fp=None):
-        self.character = None
+        self.character = {}
         self.weapons_list = []
         self.spells_list = []
         self.trackers_list = []
@@ -1201,6 +1201,12 @@ class ActiveCharacterSheetUI:
         self.mainwindow = self.UI
         self.reload_ui()
     def create_spell_item_entry(self, id, name, level, save, cast_time, s_range, damage, duration, description, is_ritual, is_concentration):
+        if(is_ritual):
+            cast_time = '(R) ' + cast_time
+        
+        if(is_concentration):
+            duration = '(C) ' + duration
+
         spell_frame = ttk.Frame(self.spells_scroll_display_frame)
         spell_frame.configure(
             height=80, relief="groove", width=650)
@@ -1513,7 +1519,7 @@ class ActiveCharacterSheetUI:
         })
         
         if(not have_hit_dice_tracker):
-            msg - "You don't have a hit dice tracker, so you need to manually roll your hit dice to heal"
+            msg = "You don't have a hit dice tracker, so you need to manually roll your hit dice to heal"
 
         if(msg == ""):
             msg = "You were out of hit dice to roll, so you didn't gain any hit points"
@@ -1681,7 +1687,7 @@ class ActiveCharacterSheetUI:
         self.roll_dialogue(1, 20, save)
     def tracker_minus_action(self, tracker_id):
         # Find the tracker instance from the id
-        t = None
+        t = Tracker()
         for tr in self.trackers_list:
             if tr.id == tracker_id:
                 t = tr
@@ -1695,14 +1701,14 @@ class ActiveCharacterSheetUI:
         self.reload_ui()
     def tracker_set_action(self, tracker_id):
         # Find the tracker instance from the id
-        t = None
+        t = Tracker()
         for tr in self.trackers_list:
             if tr.id == tracker_id:
                 t = tr
                 break
-
+        
         cur_val = int(t.value)
-        new_val = int(self.create_update_value_box("Set the value of the tracker", cur_val))
+        new_val = int(self.create_update_value_box("Set the value of the tracker", cur_val) or 0)
         trackers = self.character["trackers"]
         trackers[tracker_id]["value"] = new_val
         CharacterSheet.update_json(self.fp, {
@@ -1711,7 +1717,7 @@ class ActiveCharacterSheetUI:
         self.reload_ui()
     def tracker_add_action(self, tracker_id):
         # Find the tracker instance from the id
-        t = None
+        t = Tracker()
         for tr in self.trackers_list:
             if tr.id == tracker_id:
                 t = tr
@@ -1729,7 +1735,7 @@ class ActiveCharacterSheetUI:
         self.roll_dialogue(1, 20, abchk)
     def weapon_hit_action(self, weapon_id):
         # Find the weapon instance from the id
-        w = None
+        w = Weapon()
         for wp in self.weapons_list:
             if wp.id == weapon_id:
                 w = wp
@@ -1751,7 +1757,7 @@ class ActiveCharacterSheetUI:
         self.roll_dialogue(1, 20, mod)
     def weapon_dmg_action(self, weapon_id):
         # Find the weapon instance from the id
-        w = None
+        w = Weapon()
         for wp in self.weapons_list:
             if wp.id == weapon_id:
                 w = wp
@@ -1823,7 +1829,7 @@ class ActiveCharacterSheetUI:
         self.roll_dialogue(1, 20, mod)
     def spell_dmg_action(self, spell_id):
         # Find the tracker instance from the id
-        s = None
+        s = Spell()
         for sp in self.spells_list:
             if sp.id == spell_id:
                 s = sp
@@ -1941,7 +1947,7 @@ class ActiveCharacterSheetUI:
             # Now we can proceed to edit the tracker as normal
 
         # Get the tracker object from the character sheet object
-        tracker = None
+        tracker = {}
         for t in self.character["trackers"]:
             if(t["name"] == tracker_name):
                 tracker = t
@@ -1966,11 +1972,6 @@ class ActiveCharacterSheetUI:
             if(prop.name == "max_value"):
                 prop.input_type = "+ve_int"
 
-            # Modify the "Refresh" property to use custom rules
-            if(prop.name == "refresh"):
-                prop.input_type = "av"
-                prop.accepted_values = ["", "SR", "LR"]
-
         # Create a dialogue box to edit the item
         Popup.EditItemPopup("Edit Tracker", prop_list, self.tracker_update_callback)
     def weapon_choice_callback(self, weapon_name):
@@ -1989,7 +1990,7 @@ class ActiveCharacterSheetUI:
             weapons = self.character["weapons"]
             weapons.append(weapon_item)
         
-        weapon = None
+        weapon = {}
         for w in self.character["weapons"]:
             if(w["name"] == weapon_name):
                 weapon = w
@@ -2043,7 +2044,7 @@ class ActiveCharacterSheetUI:
             spells = self.character["spells"]
             spells.append(spell_item)
         
-        spell = None
+        spell = {}
         for w in self.character["spells"]:
             if(w["name"] == spell_name):
                 spell = w
@@ -2275,7 +2276,7 @@ class ActiveCharacterSheetUI:
             self.hp_val_label.configure(foreground="black")
         
         # tmp
-        self.hp_val_label.configure(text=hp + "/" + hpMax, textvariable=None)
+        self.hp_val_label.configure(text=hp + "/" + hpMax)
         
         # Take all the aspects of the UI and populate them with the data from the character sheet object
         self.hp_val_label.configure(text=hp + "/" + hpMax)
@@ -2388,7 +2389,7 @@ class ActiveCharacterSheetUI:
         self.weapons_list.clear()
 
         # Reset the weapon id counter
-        Weapon.id_weapon = 0
+        Weapon.id_tracker = 0
 
         # Get the list of weapons from the character dict "weapons"
         weapon_list = self.character["weapons"]
@@ -2439,7 +2440,7 @@ class ActiveCharacterSheetUI:
         self.spells_list.clear()
 
         # Reset the spell id counter
-        Spell.id_spell = 0
+        Spell.id_tracker = 0
 
         # Get the list of spells from the character dict "spells"
         spell_list = self.character["spells"]
@@ -2460,9 +2461,6 @@ class ActiveCharacterSheetUI:
             # Add to UI
             this_spell_frame.grid(column=0, padx=5, row=spell_id)
             this_spell_frame.grid_anchor("nw")
-            
-    def save_values(self, fp):
-        CharacterSheet.write_json(fp, self.character)
 
     # Create a box that displays some text, an input for some value, and a button to update that value, then the value is returned
     def create_update_value_box(self, text_to_show, curr_value, parent=None):
