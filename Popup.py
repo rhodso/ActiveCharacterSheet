@@ -275,17 +275,17 @@ def edit_item_callback(item):
 
 if __name__ == "__main__":
     # # Example usage:
-    # Popup.Roll_Result("You rolled a 20!")
+    Popup.Roll_Result("You rolled a 20!")
 
-    # new_value = Popup.Change_One_Value("Enter new value:", "old value")
-    # print(f"New value: {new_value}")
+    new_value = Popup.Change_One_Value("Enter new value:", "old value")
+    print(f"New value: {new_value}")
 
-    # Popup.ComboBoxChoice("Choose a number", [1, 2, 3, 4, 5], combo_box_callback)
+    Popup.ComboBoxChoice("Choose a number", [1, 2, 3, 4, 5], combo_box_callback)
     
-    # Popup.EditItemPopup("Edit Item", {
-    #     "Name": "Rick", 
-    #     "Url" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    #     }, edit_item_callback)
+    Popup.EditItemPopup("Edit Item", {
+        "Name": "Rick", 
+        "Url" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        }, edit_item_callback)
     
     Popup.EditItemPopup("Edit Item", [
         EditItem_Option("Name", "Rick"),
@@ -295,5 +295,3 @@ if __name__ == "__main__":
         EditItem_Option("Favourite Colour", "Red", "av", ["Red", "Blue", "Green", "Yellow"]),
         EditItem_Option("Number of Legs", 2, "+ve_int"),
         ], edit_item_callback)
-
-

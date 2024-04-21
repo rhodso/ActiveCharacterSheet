@@ -7,8 +7,7 @@ from pygubu.widgets.scrolledframe import ScrolledFrame
 
 from CharacterSheet import *
 from Helpers import Helpers
-from Popup import Popup
-from Popup import EditItem_Option
+from Popup import Popup, EditItem_Option
 
 class ActiveCharacterSheetUI:
 # ---------------------------------------------------------------------
@@ -1744,6 +1743,9 @@ class ActiveCharacterSheetUI:
         # Get the weapon's ability modifier, and if the user has proficiency with the weapon
         ability = self.character[w.ability]
         proficiency = w.is_proficient
+
+        # Get the weapon's bonus to hit
+        hit_bns = w.hit_bonus
         
         mod = Helpers.calculate_modifier(ability)
         if(mod[0] == '+'):
@@ -1752,6 +1754,23 @@ class ActiveCharacterSheetUI:
             mod = int(mod)
         if proficiency:
             mod += int(self.character["prof"])
+
+        # If this hit bonus is an integer, convert it to an int
+        if(isinstance(hit_bns, int)):
+            hit_bns = int(hit_bns)
+        
+        # If the hit bonus is a string, then see if it's a dice roll
+        elif(isinstance(hit_bns, str)):
+            if("d" in hit_bns):
+                roll = Helpers.parse_dice_string(hit_bns)
+                hit_bns = Helpers.roll_single_dice(roll[1], roll[2])
+            else:
+                if(hit_bns[0] == '+'):
+                    hit_bns = hit_bns[1:]
+                hit_bns = int(hit_bns)
+
+        # Add the hit bonus to the modifier
+        mod += hit_bns
 
         # Roll the hit
         self.roll_dialogue(1, 20, mod)
