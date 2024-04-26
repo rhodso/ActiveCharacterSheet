@@ -233,8 +233,11 @@ class Helpers:
         
         # If the dice is a list, roll the dice
         if isinstance(dice, list):
+            # If there are no dice, return the modifier
+            if dice[0] == 0:
+                return dice[2]
             # If there are multiple dice, roll multiple dice
-            if dice[0] > 1:
+            elif dice[0] > 1:
                 return Helpers.roll_multiple_dice(dice[0], dice[1], dice[2])
             # If there is only one die, roll a single die
             else:
@@ -257,7 +260,9 @@ class Helpers:
         if 'd' not in dice:
             # If there is no 'd', then is the string an integer?
             try:
-                return [0, (dice), 0]
+                # If it's just an integer, then return the integer as the modifier
+                roll = [0, 0, int(dice)]
+                return roll
             except ValueError:
                 raise ValueError("Invalid dice string")
         
@@ -355,8 +360,12 @@ class Helpers:
         # Now, roll the dice
         msg = ""
 
+        # If there's no dice
+        if roll[0] == 0:
+            msg = "No roll needed, you got a " + str(roll[2]) + "!"
+
         # If there's only one die
-        if roll[0] == 1:
+        elif roll[0] == 1:
             res = Helpers.roll_single_dice(roll[1], roll[2])
             nod = res - roll[2]
 
@@ -384,7 +393,7 @@ class Helpers:
                 msg = "You rolled a " + str(res) + "!\n(" + msg + ")"
                     
         # If there's multiple dice
-        if roll[0] > 1:
+        elif roll[0] > 1:
             res = Helpers.roll_multiple_dice(roll[0], roll[1], roll[2])
 
             # Don't bother with naturals for multiple dice, it's not worth it
