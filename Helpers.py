@@ -398,6 +398,12 @@ class Helpers:
 
             # Don't bother with naturals for multiple dice, it's not worth it
 
+            # Get the sum of the rolls
+            # TODO: This is a dumb way but it's 4 mins to dnd and I need a hotfix
+            roll_sum = 0
+            for r in res[0]:
+                roll_sum += r
+
             # Add the result to the message
             msg += "You rolled the following: "
             for i in range(len(res[0])):
@@ -405,7 +411,7 @@ class Helpers:
                 if i < len(res[0]) - 1:
                     msg += ", "
 
-            msg += "\nWhich is " + str(res[1]) + " + " + str(roll[2]) + " = " + str(res[1] + roll[2])
+            msg += "\nWhich is " + str(roll_sum) + " + " + str(roll[2]) + " = " + str(roll_sum + roll[2])
 
         # Return the message
         return msg
