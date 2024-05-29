@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="main_window" named="True">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Frame" id="header_frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="pack">
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="header_label" named="True">
+            <property name="compound">top</property>
+            <property name="font">{Arial} 16 {}</property>
+            <property name="text" translatable="yes">DM's Beastiary</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="content_frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="pack">
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Frame" id="encounter_kist_frame" named="True">
+            <property name="height">200</property>
+            <property name="width">220</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="row">0</property>
+              <property name="rowspan">2</property>
+              <property name="sticky">n</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="encounter_header_label" named="True">
+                <property name="text" translatable="yes">Encounter List</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="encounter_content_frame" named="True">
+                <property name="height">210</property>
+                <property name="width">220</property>
+                <layout manager="pack">
+                  <property name="padx">10</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="pygubu.builder.widgets.scrolledframe" id="encounter_scrollframe" named="True">
+                    <property name="scrolltype">both</property>
+                    <property name="usemousewheel">false</property>
+                    <layout manager="pack">
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="encounter_inner_frame" named="True">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="expand">true</property>
+                          <property name="fill">both</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Frame" id="example_enc_creature_frame" named="True">
+                            <property name="height">50</property>
+                            <property name="relief">groove</property>
+                            <property name="width">220</property>
+                            <layout manager="pack">
+                              <property name="expand">false</property>
+                              <property name="fill">x</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="example_enc_creature_name_label" named="True">
+                                <property name="text" translatable="yes">ReallyLongCreatureName</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="columnspan">3</property>
+                                  <property name="padx">2</property>
+                                  <property name="pady">2</property>
+                                  <property name="row">0</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="example_enc_creature_cr_label" named="True">
+                                <property name="text" translatable="yes">CR: 99</property>
+                                <layout manager="grid">
+                                  <property name="column">2</property>
+                                  <property name="padx">2</property>
+                                  <property name="row">0</property>
+                                  <property name="sticky">e</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="example_enc_creature_spacer_frame" named="True">
+                                <property name="height">1</property>
+                                <property name="width">38</property>
+                                <layout manager="grid">
+                                  <property name="column">1</property>
+                                  <property name="row">1</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="example_enc_remove_button" named="True">
+                                <property name="command" type="command" cbtype="with_wid">example_enc_remove_action</property>
+                                <property name="text" translatable="yes">Remove</property>
+                                <property name="width">9</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="padx">2</property>
+                                  <property name="pady">2</property>
+                                  <property name="row">2</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="example_enc_edit_button" named="True">
+                                <property name="command" type="command" cbtype="with_wid">example_enc_edit_action</property>
+                                <property name="text" translatable="yes">Edit</property>
+                                <property name="width">9</property>
+                                <layout manager="grid">
+                                  <property name="column">1</property>
+                                  <property name="row">2</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="example_enc_more_info_button" named="True">
+                                <property name="command" type="command" cbtype="with_wid">example_enc_more_info_action</property>
+                                <property name="text" translatable="yes">More Info</property>
+                                <property name="width">9</property>
+                                <layout manager="grid">
+                                  <property name="column">2</property>
+                                  <property name="padx">2</property>
+                                  <property name="pady">2</property>
+                                  <property name="row">2</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="creature_list_frame" named="True">
+            <property name="height">200</property>
+            <property name="width">150</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="padx">5</property>
+              <property name="row">0</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="creature_search_header_label" named="True">
+                <property name="text" translatable="yes">Creature List</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="creature_list_control_frame" named="True">
+                <property name="height">100</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="cr_filter_label" named="True">
+                    <property name="text" translatable="yes">CR Filter</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="row">0</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="beasts_filter_label" named="True">
+                    <property name="text" translatable="yes">Bsts List</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="row">1</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Combobox" id="cr_filter_combobox" named="True">
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Combobox" id="beasts_list_combobox" named="True">
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="add_to_encounter_button" named="True">
+                    <property name="command" type="command" cbtype="simple">add_to_encounter_action</property>
+                    <property name="text" translatable="yes">Add to Encounter</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="actions_frame" named="True">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="row">1</property>
+              <property name="sticky">n</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="actions_header" named="True">
+                <property name="text" translatable="yes">Actions</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="action_buttons_frame" named="True">
+                <property name="height">100</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Button" id="add_random_button" named="True">
+                    <property name="command" type="command" cbtype="simple">add_random_action</property>
+                    <property name="text" translatable="yes">Add Random</property>
+                    <property name="width">17</property>
+                    <layout manager="pack">
+                      <property name="side">top</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="send_to_builder_button" named="True">
+                    <property name="command" type="command" cbtype="simple">send_to_builder_action</property>
+                    <property name="text" translatable="yes">Send to Builder</property>
+                    <property name="width">17</property>
+                    <layout manager="pack">
+                      <property name="side">top</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="clear_list_button" named="True">
+                    <property name="command" type="command" cbtype="simple">clear_list_action</property>
+                    <property name="text" translatable="yes">Clear List</property>
+                    <property name="width">17</property>
+                    <layout manager="pack">
+                      <property name="side">top</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="add_new_creature_button" named="True">
+                    <property name="command" type="command" cbtype="simple">add_new_creature_action</property>
+                    <property name="text" translatable="yes">Add New Creature</property>
+                    <property name="width">17</property>
+                    <layout manager="pack">
+                      <property name="side">top</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

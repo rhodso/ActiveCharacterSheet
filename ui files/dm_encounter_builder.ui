@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="main_window" named="True">
+    <property name="height">270</property>
+    <property name="width">384</property>
+    <child>
+      <object class="ttk.Frame" id="header_frame" named="True">
+        <property name="height">50</property>
+        <property name="width">350</property>
+        <layout manager="place">
+          <property name="anchor">n</property>
+          <property name="height">30</property>
+          <property name="width">300</property>
+          <property name="x">192</property>
+          <property name="y">7</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="header_label" named="True">
+            <property name="font">{Arial} 20 {}</property>
+            <property name="justify">center</property>
+            <property name="text" translatable="yes">DM's Encounter Builder</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">y</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="enc_cl_frame" named="True">
+        <property name="height">200</property>
+        <property name="width">330</property>
+        <layout manager="place">
+          <property name="anchor">nw</property>
+          <property name="height">215</property>
+          <property name="width">262</property>
+          <property name="x">5</property>
+          <property name="y">50</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="enc_cl_header_label" named="True">
+            <property name="font">{Arial} 12 {}</property>
+            <property name="text" translatable="yes">Creatures in Encounter</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="pygubu.builder.widgets.scrolledframe" id="enc_cl_scrollframe" named="True">
+            <property name="height">300</property>
+            <property name="scrolltype">both</property>
+            <property name="usemousewheel">false</property>
+            <property name="width">290</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="padx">5</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Frame" id="enc_cl_inner_frame" named="True">
+                <property name="height">300</property>
+                <property name="width">280</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                </layout>
+                <child>
+                  <object class="ttk.Frame" id="example_cle_frame" named="True">
+                    <property name="height">200</property>
+                    <property name="relief">groove</property>
+                    <property name="width">300</property>
+                    <layout manager="pack">
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Frame" id="example_cle_name_frame" named="True">
+                        <property name="height">25</property>
+                        <property name="width">133</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="columnspan">2</property>
+                          <property name="padx">5</property>
+                          <property name="pady">5</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="example_cle_name_label" named="True">
+                            <property name="text" translatable="yes">ReallyLongCreatureName</property>
+                            <layout manager="pack">
+                              <property name="padx">5</property>
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="example_cle_quant_frame" named="True">
+                        <property name="height">25</property>
+                        <property name="width">75</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="padx">5</property>
+                          <property name="row">0</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Button" id="example_cle_dec_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">example_cle_dec_action</property>
+                            <property name="text" translatable="yes">-</property>
+                            <property name="width">1</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="example_cle_quant_val" named="True">
+                            <property name="text" translatable="yes">99</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="example_cle_inc_button" named="True">
+                            <property name="command" type="command" cbtype="with_wid">example_cle_inc_action</property>
+                            <property name="text" translatable="yes">+</property>
+                            <property name="width">1</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="example_cle_stats_frame" named="True">
+                        <property name="height">25</property>
+                        <property name="width">133</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="columnspan">2</property>
+                          <property name="padx">5</property>
+                          <property name="row">1</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="example_cle_ac_label" named="True">
+                            <property name="text" translatable="yes">AC</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="example_cle_ac_val" named="True">
+                            <property name="text" translatable="yes">99</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="example_cle_ib_label" named="True">
+                            <property name="text" translatable="yes">IB</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="example_cle_ib_value" named="True">
+                            <property name="text" translatable="yes">+99</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="example_cle_hp_label" named="True">
+                            <property name="text" translatable="yes">HP</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="example_cle_hp_value" named="True">
+                            <property name="text" translatable="yes">9999/9999</property>
+                            <layout manager="pack">
+                              <property name="padx">5</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="example_cle_edit_frame" named="True">
+                        <property name="height">25</property>
+                        <property name="width">50</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="padx">5</property>
+                          <property name="pady">2</property>
+                          <property name="row">1</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Button" id="example_cle_edit_button" named="True">
+                            <property name="command" type="command" cbtype="simple">example_cle_</property>
+                            <property name="text" translatable="yes">Edit</property>
+                            <property name="width">7</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="actions_frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="place">
+          <property name="anchor">nw</property>
+          <property name="height">215</property>
+          <property name="width">110</property>
+          <property name="x">268</property>
+          <property name="y">50</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="actions_header" named="True">
+            <property name="font">{Arial} 12 {}</property>
+            <property name="text" translatable="yes">Actions</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="add_creature_button" named="True">
+            <property name="command" type="command" cbtype="simple">add_creature_action</property>
+            <property name="text" translatable="yes">Add Creature</property>
+            <property name="width">15</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="start_encounter_button" named="True">
+            <property name="command" type="command" cbtype="simple">start_encounter_action</property>
+            <property name="text" translatable="yes">Start Encounter</property>
+            <property name="width">15</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="open_beastiary_button" named="True">
+            <property name="command" type="command" cbtype="simple">open_beastiary_action</property>
+            <property name="takefocus">false</property>
+            <property name="text" translatable="yes">Open Beastiary</property>
+            <property name="width">15</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
